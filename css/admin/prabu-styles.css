@@ -1,0 +1,623 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+.poll_content{
+	margin:112px 0 0;
+    padding: 30px 30px 30px 30px;
+    width: 100%;
+	overflow:hidden;
+	}
+.back-top
+{
+	border-right: 1px solid #ccc;
+    margin-right: 15px;
+    margin-top: 3px;
+    padding: 5px 15px 4px 5px;
+}
+.create_poll {
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    box-shadow: 0 0px 4px -1px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+}
+.qnsans
+{
+	width:100%;
+	float:left;
+	margin-bottom:20px;
+}
+.qnsans label
+{
+	font-size: 15px;
+}
+.qnsans .qns
+{
+	width:25%;
+	float:left;
+	padding-right: 10px;
+}
+.qnsans .qns label
+{
+	display:inline;
+	float: left;
+    margin-top: 7px;
+}
+.qnsans .ans
+{
+	width:75%;
+	float:left;
+}
+
+
+.create_poll .fileUpload {
+	font-size: 15px;
+    margin: 0;
+    padding: 5px 10px;
+}
+.fileUpload input.upload {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.qnsans .ans .include
+{
+	float:left;
+	margin-right:20px;
+}
+.qnsans .include input
+{
+	margin-right:3px;
+}
+.qnsans .tb_style
+{
+	width:300px;
+	height:35px;
+}
+
+.back-bottom
+{
+	border-left: 1px solid #ccc;
+    margin-left: 15px;
+    margin-top: 3px;
+    padding: 5px 5px 4px 15px;
+}
+/*.qnsans .include_label{
+	float:left;
+	padding-left: 3px;
+    padding-top: 5px;
+}*/
+
+/******************Poll Results******************/
+#chartdiv {
+	width		: 100%;
+	height		: 435px;
+	font-size	: 11px;
+}											
+.poll_res_topic
+{
+	margin:0 0 0 20px;
+	font-size:20px;
+}
+.text_result {
+    width: 100%;
+    font-size: 18px;
+    float: left;
+}
+.text_result label
+{
+	width:100%;
+	font-size:17px;
+	float:left;
+	margin-bottom: 10px;
+}
+.text_result textarea
+{
+	float:left;
+	width:100% !important;
+}
+.back_result
+{
+	width:100%;
+	overflow:hidden;
+}
+
+
+/*************************Ask Prabhu Css************/
+.ask_prabhu
+{
+	padding:20px;
+	margin:0;
+	width:94%;
+	
+	 overflow:hidden;
+}
+.ask_prabhu1
+{
+	float:left;
+	width:15%;
+	margin-bottom: 10px;
+}
+
+.ask_prabhu2
+{
+	overflow:hidden;
+	width:85%;
+	margin-bottom: 10px;
+}
+
+.ask_prabhu2a
+{
+	float:left;
+	width:20%;
+}
+
+.ask_prabhu2b
+{
+	float:left;
+	width:80%;
+}
+.ask_prabhu .ask_bold
+{
+	font-weight:bold;
+}
+.ask_prabhu1 p
+{
+	float:right;
+	padding-right:20px;
+}
+.ask_prabhu p
+{
+	font-size: 15px;
+    margin-bottom: 7px;
+}
+
+
+
+
+/*****************************************Menu Manager******************************************/
+.section_content
+{
+	margin: 112px 0 0;
+    padding: 15px 10px 11px 10px;
+    width: 100%;
+}
+.section_form
+{
+	border: 1px solid #ccc;
+    margin-top: 7px;
+    overflow: hidden;
+    padding: 10px;
+    width: 100%;
+}
+.section1
+{
+	width:60%;
+	float:left;
+	padding-bottom:15px;
+	border-right: 1px solid #ccc;
+	padding-right:15px;
+}
+
+.section2
+{
+	width:40%;
+	float:left;
+}
+.section_content label
+{
+	width:100%;
+	text-align:right;
+}
+.section_right
+{
+	width:auto;
+}
+.section1 .has-pretty-child
+{
+	margin-right:0px !important;
+}
+.section1 .right01
+{
+	width:8%;
+	float:left;
+	padding-top:2px;
+}
+
+.section1 .right02
+{
+	float: left;
+    padding-right: 10px;
+    text-align: right;
+    width: 30%;
+	padding-top:6px;
+}
+
+.section1 .right03
+{
+	width:45%;
+	float:left;
+}
+.section_content .fileUpload
+{
+	padding:5px 10px !important;
+	margin-top:2px;
+}
+
+.section2 .qns
+{
+	width:32% !important;
+}
+.section2 .ans
+{
+	width:68% !important;
+}
+.section_seo
+{
+    float: left;
+    margin:0 0 25px 10px;
+    width: auto;
+	padding:10px 0 15px 0px;
+	border-top:1px solid #ccc;
+}
+.section_seo .include {
+	margin-right:10px;
+	width:auto;
+	float:left;
+}
+.section_seo .include label
+{
+	width:auto !important;
+}
+.section_seo_head
+{
+	 color: #117eb0;
+    font-size: 16px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+}
+.section_seo label
+{
+	color:#4a4a4a;
+}
+.section_seo .qnsans
+{
+	margin-left:10px;
+	margin-top:5px;
+	margin-bottom:15px;
+}
+
+.section_canonic 
+{
+	float: left;
+    margin-left: 15px !important;
+}
+.section_canonic label
+{
+	padding-right:10px;
+}
+.section_social
+{
+	margin-bottom:6px;
+}
+
+/* Top Save Margin for without bootstrap files*/
+.save_margin
+{
+	margin:10px 0;
+}
+
+/*******************************************************Create Users*****************************************************/
+.create-use-set{
+	padding:15px;
+	margin-bottom:20px;
+	clear:left;
+}
+.create-use-set b{
+	font-size:18px;
+	padding:0 10px 0 10px;
+	color:#117eb0;
+}
+.user-top{
+	float:left;
+	width:100%;
+}
+.user-style{
+	width:170px;
+	height:35px;
+}
+.user-style1{
+	width:300px;
+	height:35px;
+}
+.qnsans .ans-use{
+    width: 19%;
+    float: left;
+}
+.qnsans .ans-use1{
+    width: 31%;
+    float: left;
+}
+.use-detail{
+  width: 19%;
+  float: left;
+}
+
+.qnsans .qns-use{
+    width: 13%;
+    float: left;
+   padding-right: 14px;
+}
+.qnsans .qns2 label, .qnsans .qns-use label
+{
+	display:inline;
+	float:right;
+    margin-top: 7px;
+}
+.qnsans .qns2
+{
+	width:12%;
+	float:left;
+	padding-right: 14px;
+}
+.create-tab .CompareArticle {
+    width: 100%;
+}
+.create-main .tap-main{
+ padding-right:0;
+}
+/***************************************************************Create Users end***********************************************/
+
+
+/***************************************************************Setting***********************************************/
+.qnsans .qns3 {
+    float: left;
+    padding-right: 14px;
+    width: 13.5%;
+}
+.qnsans .qns3 label{
+	display:inline;
+	float:right;
+	font-weight:normal !important;
+    margin-top: 7px;
+}
+.qnsans h5{
+	color:#999;
+}
+.setting #view1{
+	border:none !important;
+}
+.system-setting {
+    margin: 20px;
+    overflow: hidden;
+    width: 98.5%;
+	
+}
+.system-setting h3{
+	margin-top:0px !important;
+	color:#3c8dbc;
+}
+.qnsans .tb_style2 {
+    height: 35px;
+    width: 450px;
+}
+.ans textarea{
+	min-height:70px !important;
+	width:300px;
+}
+.setting-border{
+	padding:8px !important;
+	overflow:hidden;
+	border-bottom:1px solid  #CCC;
+}
+.qnsans .set-wit {
+    float: left;
+    padding-right: 14px;
+    width: 22.5%;
+}
+.right0312 {
+  width: 38%;
+  float: left;
+}
+.setting .tabcontents{
+	background-color: #fff;
+    height: auto;
+    overflow: hidden;
+	margin-top:0;
+    padding:0;
+    width: 100%;
+}
+/***************************************************************Setting end***********************************************/
+
+
+/***************************************************************role-department***********************************************/
+.role-depart{
+    margin:112px 0 0;
+    padding: 10px 40px 0 0px;
+	
+}
+.role-dept{
+	float:left;
+	overflow:hidden;
+	width:100%;
+	padding:20px;
+	margin:20px;
+	border:1px solid #CCC;		
+}
+.role-first{
+	float:left;
+	width:100%;
+	padding: 10px 30px;
+	margin:0;
+}
+
+.role-first .include_label {
+	margin-right:15px;
+}
+/*.role-dept input{
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(179, 180, 182, 1);
+  -moz-box-shadow: 0px 0px 3px 1px rgba(179, 180, 182, 1);
+  box-shadow: 0px 0px 3px 1px rgba(179, 180, 182, 1);
+}
+*/
+
+
+
+.role-second h3{
+	font-size:20px;
+	color: #0A83CA;
+}
+.role-tr{
+	padding:15px;
+	
+}
+.role-tr tr th, .role-tr tr td{
+	padding:10px 20px;
+	text-align:center;
+	
+}
+.create-scroll {
+    width: 465px;
+    height: 300px;
+    overflow: auto;
+	margin-bottom:20px;
+	border:1px solid #CCC;
+}
+.role-th th{
+	padding:10px 20px;
+	color:#3c8dbc;
+	
+}
+.role-th{
+	margin-left:20px;
+	
+}
+.role-dpt {
+    border: 1px solid #ccc;
+    float: left;
+    height: 353px;
+    overflow-y: scroll;
+    width: 100%;
+}
+.tooltip_cursor{
+ cursor:pointer;
+}
+.roleaccess_rights{
+ clear:both;
+}
+.roleaccess_rights ul{
+ width:40%;
+}
+.roleaccess_rights h2, .roleaccess_rights li{
+ padding:5px 0 5px 0;
+ width:100%;
+}
+.role-depart .CompareArticle table {
+    margin-bottom: 15px;
+}
+/***************************************************************role-department end***********************************************/
+
+
+/******************add-articel-updates*******************/
+.add_widget{
+	width: 70%;
+    margin: auto;
+	/*width: 64%;
+    margin: 0 auto;
+	border:1px solid #ccc;*/
+}
+
+.add_widget .SectionCk .cke_contents {
+    height: 85px !important;
+}
+.add_widget td, .add_widget tr {
+	 background:#cce9f6 !important;
+ }
+.add_widget.dataTable td{
+	  background:#cce9f6 !important;
+	  padding-bottom:0 !important;
+ }
+.add_widget td{
+	  padding: 20px 20px;
+	  text-align:left !important;
+}
+.add_widget img{
+	clear:both;
+	width:31%;
+	float:left;
+	border:2px solid #ccc;
+	margin-top:5px;
+}
+.add_widget input{
+	float:left;
+}
+.add_widget input, .add_widget textarea, .add_widget select {
+	font-family:Arial, Helvetica, sans-serif !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 6px;
+    width: 283px;
+	background:#84c7ea;
+	color:#FFF;
+}
+.add_widget .btn-primary {
+    float: left;
+}
+.close_article{
+	
+	font-size:19px;
+	cursor:pointer;
+	
+}
+.wid-article-table td{
+	padding-bottom:0 !important;
+}
+.add_widget button.btn {
+    margin-bottom: 10px;
+}
+
+.wid-main table.dataTable td i{
+	color:#1c7db5;
+	cursor:pointer;
+}
+.close_span {
+	color:#fff;
+	float: right;
+    margin: 10px;
+}
+
+.close_span i, .right-wid i {
+	color:#fff !important;	
+}
+
+.wid-main #example_paginate{ margin: 11px 17px 8px 0; }
+
+.wid-article-table td{
+	text-align:center !important;
+}
+.wid-article-table td:nth-child(2) {
+    min-width: 370px !important;
+	height: 60px !important;
+	text-align: left !important;
+}
+.wid-article-table tr th:first-child{
+	min-width: 42px !important;
+}
+	
+
+/***************************************************************Add article end***********************************************/
+.custom-image-browse{
+	width:106px;
+}
+.add_widget td:nth-child(2){
+	/*width:120px !important;*/
+	min-width: auto !important;
+}

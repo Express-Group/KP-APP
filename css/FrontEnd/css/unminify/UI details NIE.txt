@@ -1,0 +1,7 @@
+
+  Type :  HTML5  & CSS3
+  Responsive framework: Bootstrap
+  Image Slide: Slick  framework (http://kenwheeler.github.io/slick/) 
+  Icons: font awesome (http://fontawesome.io/)
+  Css-Minfile: https://cssminifier.com/
+  JS -Minfile: https://javascript-minifier.com/

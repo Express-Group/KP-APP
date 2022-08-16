@@ -1,0 +1,82 @@
+﻿/* Tab Content - menucool.com */
+
+ul.tabs
+{
+ font-size: 0;
+    margin: 35px 0 0 22px;
+    padding: 10px 0;
+    text-align: left;
+}
+        
+ul.tabs li
+{
+    display: inline;
+    margin: 0;
+    margin-right:3px; /*distance between tabs*/
+}
+        
+ul.tabs li a
+{
+    font: normal 12px Verdana;
+    text-decoration: none;
+    position: relative;
+    padding: 7px 16px;
+    border-bottom-color:#51a2e8;
+    color: #fff!important;
+	border:1px solid #82C0FF;
+	border-bottom:none;
+    background:#146ab5;
+    border-radius: 5px 5px 0 0;
+    outline:none;
+}
+ul.tabs li a:hover{
+	background:#fff;
+	color:#146ab5!important;
+	}
+ul.tabs li a:visited
+{
+    color: #000;
+}
+        
+ul.tabs li a:hover
+{
+    border: 1px solid #B7B7B7;
+	border-bottom:none;
+  background:#fff;
+  color:#000;
+}
+        
+ul.tabs li.selected a, ul.tabs li.selected a:hover
+{
+    position: relative;
+    top: 0px;
+    font-weight:normal;
+	color:#146ab5!important;
+    background: white;
+    border: 1px solid #B7B7B7;
+    border-bottom-color: white;
+}
+        
+        
+ul.tabs li.selected a:hover
+{
+    text-decoration: none;
+}
+
+div.tabcontents
+{
+	background-color: #fff;
+    height: auto;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 20px 15px 0;
+    width: 100%;
+}
+.tabcontents label
+{
+	font-weight:normal;
+}
+.tabcontents .video_label
+{
+	font-size:15px;
+}

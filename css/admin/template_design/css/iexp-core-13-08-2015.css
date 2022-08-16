@@ -1,0 +1,122 @@
+ /*
+	Stylesheet for examples by DevHeart.
+	http://devheart.org/
+ */
+
+/*
+	Reset (for cross-browser friendlyness)
+------------------------------------------------------------------- */
+
+html,.iexp-body,.iexp-div,.iexp-span,.iexp-object,.iexp-iframe,.iexp-h1,.iexp-h2,.iexp-h3,.iexp-h4,.iexp-p,.iexp-blockquote,.iexp-pre,.iexp-a,.iexp-code,.iexp-em,.iexp-img,.iexp-ol,.iexp-ul,.iexp-li,.iexp-fieldset,.iexp-form,.iexp-label,.iexp-legend,.iexp-textarea,.iexp-input,.iexp-select {border:0;font-family:inherit;font-size:100%;font-style:inherit;font-weight:inherit;margin:0;padding:0;vertical-align:baseline}.iexp-a
+.iexp-img{border:none}.iexp-a,.iexp-a:focus,iexp-a:hover,iexp-a:active,iexp-a:visited{outline:none}
+
+
+/*
+	General
+------------------------------------------------------------------- */
+
+.iexp-body {
+	font: normal 75% sans-serif;
+	line-height: 1.5;
+	padding: 32px 0;
+}
+
+
+/*
+	Typography
+------------------------------------------------------------------- */
+
+/* Headings */
+
+.iexp-h1, .iexp-h2, .iexp-h3 {
+	color: #404244;
+	line-height: 1;
+	margin-bottom: 0.25em;
+}
+.iexp-h1 {font-size: 2.2em;}
+.iexp-h2 {font-size: 1.6em;}
+.iexp-h3 {font-size: 1.4em;}
+.iexp-h1, .iexp-h3 {font-weight: bold;}
+
+
+/* Paragraphs */
+.iexp-p {margin-bottom: 1em;}
+
+
+/* Links */
+.iexp-link {
+	color: #248;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.iexp-link:hover {color: #D52;}
+
+/* Misc classes */
+
+.iexp-small {font-size: 0.8em;}
+.iexp-large {font-size: 1.2em;}
+
+.iexp-hidden {display: none;}
+
+.iexp-quiet {color: #777;}
+.iexp-loud {color: #000;}
+.iexp-highlight {background-color: #FFA;}
+
+.iexp-text-left {text-align: left;}
+.iexp-text-right {text-align: right;}
+.iexp-text-center {text-align: center;}
+.iexp-text-separator {padding: 0 5px;}
+
+
+/*
+	Alignment
+------------------------------------------------------------------- */
+
+/* Floats */
+
+.iexp-left {float: left;}
+.iexp-right {float: right;}
+
+
+/* Clearers */
+
+.iexp-clear,.iexp-clearer {clear: both;}
+.iexp-clearer {
+	display: block;
+	font-size: 0;
+	line-height: 0;
+}
+
+
+/*
+	Sections and titles
+------------------------------------------------------------------- */
+
+#iexp-step-dropdown-wrapper {width: 320px;}
+#iexp-step-dropdown {
+	background: #FCFCFC;
+	border: 1px inset #AAA;
+	margin: 0;
+	padding: 0;
+}
+
+#iexp-step-navigation {
+	background-color: #F2F6FA;
+	border: 1px solid #E0E4E8;
+	border-color: #E0E4E8 #D6DADF #C6CACF;
+	padding: 8px 10px;
+	font-size: 14px;
+}
+
+#iexp-step-navigation .iexp-text-separator {color: #A2A6AA;}
+
+.iexp-example-section {margin-bottom: 24px; padding-top: 32px;}
+.iexp-example-section-header {margin-bottom: 24px;}
+
+.iexp-example-title {
+	color: #246;
+	border-bottom: 2px solid #68A;
+	padding-bottom: 6px;
+}
+
+.iexp-example-description {color: #444;}

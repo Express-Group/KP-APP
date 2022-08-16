@@ -1,0 +1,92 @@
+.tap-main{
+	border: 1px solid #ccc;
+    float: left;
+    margin-bottom: 39px;
+    margin-left: 22px;
+    padding-right: 14px;
+    width: 95%;
+}
+.tap-list{
+	width:68%;
+	float:left;	
+}
+.preview{
+  width: 29.9%;
+  float: right;
+  text-align: -webkit-center;
+   margin-top: 15px;
+}
+.tabs {
+	 min-height:0px !important;
+}
+.border{
+	border-bottom:1px solid #999;
+	width:100%;
+
+}
+.size{
+	padding:20px !important;
+}
+.form2{
+	width:100%;
+	float:left;
+	clear:both;
+}
+.form2-list{
+	width:65%;
+	float:left;
+}
+table.form-main textarea {
+  border: 1px solid #F4F2F2;
+  padding: 2px;
+  width: 341px;
+}
+.side{
+	width:30%;
+	float:right;
+	border:1px solid #CCC;
+	margin-top: 124px;
+}
+.form-main1 input[type=checkbox]{
+	padding:10px !important;
+}
+/* ==================== Form style sheet ==================== */
+
+table.form { margin: 0px 0 0 -41px; border-collapse: collapse; }
+
+table.form th, table.form td { padding: 4px 5px; text-align: left; font-weight: normal; }
+
+table.form label { font-family: Verdana, Arial, Helvetica, sans-serif; color: #181818; margin-right: 12px; font-weight:100 !important; }
+table.form td span { font-size: 0.9em; color: #181818; margin-left: 8px; }
+table.form td samp { font: 1em Verdana, Arial, Helvetica, sans-serif; color: #000000; }
+
+table.form input { width: 340px; }
+table.form input.answer { width: 53px; }
+table.form textarea {
+  width: 340px;
+  height: 80px;
+}
+
+table.form input.inp-text, table.form input.answer, table.form textarea
+{ border: 1px solid #ccc; padding: 2px; width: 452px; }
+
+table.form th.message-up { vertical-align: top !important; }
+
+table.form label.invisible { visibility: hidden; }
+
+table.form td.submit-button-right { text-align: right !important; }
+table.form input.submit-text { font: 1.4em Georgia, "Times New Roman", Times, serif; letter-spacing: 1px; width: auto; }
+
+
+/* ==================== Form style sheet END ==================== */
+
+
+/*Alignment Styles*/
+.VideoTable .w2ui-field
+{
+	margin:0 0 10px 0 !important;
+}
+/*.VideoTable02 .w2ui-field
+{
+	margin:0 0 5px 14px;
+}*/

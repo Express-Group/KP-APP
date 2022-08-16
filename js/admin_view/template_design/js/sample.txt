@@ -1,0 +1,433 @@
+IEXP.templateManager = function() {
+	var searchObj = {
+		$facetsSidebar: null, 
+		$form: null, 
+		
+		init: function() {
+			this.$facetsSidebar = $("div.search-facets:first");
+			this.$form = this.$facetsSidebar.closest("form");
+			this.$resultArea = this.$form.find(".search-results");
+			
+			this.initializeLeftSidebar();
+			this.initializeResultsArea();
+			
+			//TEMP
+			//SPI.headerSearch();
+		},
+		initializeResultsArea: function() {
+			this.sortProxies.init();
+			this.saveSearch.init();
+			this.pagination.init();
+			var that = this;
+			this.$resultArea.bind("click", function(e) {
+			var $elem = $(e.target);			
+			if($elem.is('.has-child a') || $elem.is('.has-child a span')){
+				that.resultAreaDropdownMenu.show($elem);									
+			}else if($elem.is('.has-child ul li')){
+				that.resultAreaDropdownMenu.selectChild($elem);
+			}else if($elem.is('a.go-btn') || $elem.is('a.go-btn span')){
+				that.updateResults.go($elem.closest("form"));
+			}
+			});
+		}, 
+		initializeLeftSidebar: function() {
+			this.checkboxProxies.init();
+			this.sidebarExpandCollapse.init();
+			
+			var that = this;
+			this.$facetsSidebar.bind("click", function(e) {
+				var $elem = $(e.target);
+				
+				if ($elem.is("input:checkbox")) {
+					that.checkboxProxies.updateProxyWithCheckboxState($elem);
+					that.updateResults.go($elem.closest("form"));
+					
+					//analytics
+					SearchFilterClicks($("div.search-results span.term:first").html(), $elem.closest("fieldset").find("legend:first").text(), $elem.val());
+				}
+				else if ($elem.is("legend span") || $elem.is("legend") || $elem.is("h2") || $elem.is("h2 span")) {
+					//if not logged in, and user clicks saved or recent searches
+					if ($elem.is("h2") || $elem.is("h2 span")) {
+						if (!SPI.user.userState) {
+							if ($elem.closest("div.savedSearch").next().is("div.savedSearch")) {
+								that.sidebarExpandCollapse.toggle($elem);
+							}
+							else {
+								SPI.userLoginModal("showsavedsearches", null);
+							}
+						}
+						else {
+							that.sidebarExpandCollapse.toggle($elem);
+						}
+					}
+					else {
+						that.sidebarExpandCollapse.toggle($elem);
+					}
+				}
+				else if ($elem.is("a.remove")) {	
+					var $searchListContainer = $elem.closest("div.savedSearch"); 
+					if ($searchListContainer.prev().is("div.savedSearch")) {
+						//saved search removal
+						that.removeSavedSearch($elem);
+						e.preventDefault();
+					}
+					else {
+						that.removeRecentSearch($elem);
+						e.preventDefault();
+					}
+				}
+			});
+		}, 
+		pagination: {
+			currentPageNumber:null,
+			init: function() {
+				var $container = searchObj.$form.find("div#search-pagination");
+				this.pagesDetailObj = this.getPagesDetailObj($container);				
+				this.syncEnabledButtons($container, this.pagesDetailObj);
+				this.addEvents($container);
+			}, 
+			addEvents: function($container) {
+				var that = this;
+				$container.find("span.previous").bind("click", function(e) {
+					if (!$(this).hasClass("disabled")) {
+						that.incrementPage(-1);
+					}
+					return false;
+				});
+				$container.find("span.next").bind("click", function(e) {				
+					if (!$(this).hasClass("disabled")) {
+						that.incrementPage(1);						
+					}
+					return false;
+				});
+			}, 
+			incrementPage: function(pageDelta) {
+				searchObj.updateResults.goToPage(searchObj.$form, this.pagesDetailObj.current + pageDelta);
+			}, 
+			getPagesDetailObj: function($container) {
+				var obj = {current: 1, total: 1};				
+				var paginationText = $container.find("span.page-data span").attr("data-pagination");
+				try {
+					var textArr = paginationText.split(" of ");
+					obj.current = parseInt(textArr[0], 10);
+					obj.total = parseInt(textArr[1], 10);	
+					searchObj.pagination.currentPageNumber = obj.current;
+				}
+				catch (e) { }
+				return obj;
+			}, 
+			syncEnabledButtons: function($container, pagesDetailObj) {
+				var $liPrev = $container.find("span.previous");
+				var $liNext = $liPrev.siblings("span.next");
+				if (pagesDetailObj.current == 1) {
+					$liPrev.addClass("disabled");
+				}
+				else {
+					$liPrev.removeClass("disabled");
+				}
+				if (pagesDetailObj.current == pagesDetailObj.total) {
+					$liNext.addClass("disabled");
+				}
+				else {
+					$liNext.removeClass("disabled");
+				}
+			}
+		}, 
+		saveSearch: {
+			init: function() {
+				var that = this;
+				var $saveSearchElem = searchObj.$form.find("input.saveSearch").bind("click", function() {
+					that.save($(this));
+					return false;
+				});
+				var that = this;
+				var $querybox = searchObj.$form.find("input.query");
+				this.sync($querybox, $saveSearchElem);
+			}, 
+			sync: function($querybox, $saveSearchElem) {
+				if ($querybox.val() && $querybox.val().length > 0) {
+					this.enable($saveSearchElem);
+				}
+				else {
+					this.disable($saveSearchElem);
+				}
+			}, 
+			enable: function($saveSearchElem) {
+				$saveSearchElem.removeClass("disabledSaveSearch");
+			}, 
+			disable: function($saveSearchElem) {
+				$saveSearchElem.addClass("disabledSaveSearch");
+			}, 
+			save: function($saveSearchElem) {
+				//user is not logged in
+				if (!SPI.user.userState) {
+					SPI.userLoginModal("savesearch", null);
+				}
+				else {
+					this.loggedInSave();
+				}
+			}, 
+			loggedInSave: function() {
+				var $form = searchObj.$form;
+				var formParams = $form.serialize();
+				var $querybox = $form.find("input.query");
+				var searchQuery = $querybox.val();
+				
+				var that = this;
+				$.ajax({
+					url: SPI.currentPage.mySPIndicesUrl + SPI.PageAjaxMap.saveSearch,
+					dataType: "jsonp",
+					type: 'post',
+					beforeSend: SPI.setAndSetHeaders,
+					data: {
+						searchterm: searchQuery, 
+						searchname: searchQuery, 
+						searchparameters: searchQuery,
+						skipFiltering: 'true',
+						callback : 'addMySearchResponseCallBack'
+					},
+					crossDomain: true,
+					jsonpCallback: 'addMySearchResponseCallBack',
+					success: function (data,textStatus,jqXHR) {
+						if (data.status == true) {
+							//that.addSavedSearchToList($form);
+							//window.location.reload(); 
+							$form.submit();
+						} else {
+							SPI.modules.showErrors(data.serviceMessages);
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+						SPI.modules.showModalMessage(jsSiteLabels.ServerErrorMap.troubleInteractingWithServer);
+					},
+					complete: function(jqXHR, textStatus){
+					}
+				});
+			}, 
+			addSavedSearchToList: function($form) {
+				var $querybox = $form.find("input.query");
+				var formParams = $form.serialize();
+				var resultsUrl = $form.get(0).action + "?" + formParams;
+					
+				var $ul = $form.find("div.savedSearch ul").eq(1);
+				$ul.append('<li><a href="search/?' + formParams + '">' + $querybox.val() + '</a> <a class="remove">Remove</a></li>');
+			}
+		}, 
+		removeSavedSearch: function($removeSearchElem) {
+			var $searchLink = $removeSearchElem.prev();
+			var searchUrl = $searchLink.attr("href");
+			var searchName = $searchLink.text();
+			$.ajax({
+				url: SPI.PageAjaxMap.removeSavedSearch,
+				data: {
+					searchName: searchName, 
+					url: searchUrl
+				}, 
+				dataType: 'json',
+				type: 'post',
+				beforeSend: SPI.setAndSetHeaders,
+				success: function (data) {
+					window.location.reload(); 
+				},
+				error: function () { }
+			});
+		}, 
+		removeRecentSearch: function($removeRecentElem) {
+			var $searchLink = $removeRecentElem.prev();
+			var searchUrl = $searchLink.attr("href");
+			var searchName = $searchLink.text();
+			$.ajax({
+				url: SPI.PageAjaxMap.removeRecentSearch,
+				data: {
+					searchName: searchName, 
+					url: searchUrl
+				}, 
+				dataType: 'json',
+				type: 'post',
+				success: function (data) {
+					if (data.status == true) {
+						$removeRecentElem.closest("li").remove();
+						window.location.replace("/search?Recent=Recent&query=");
+					} else {
+						SPI.modules.showErrors(data.serviceMessages);
+					}
+					
+				},
+				error: function (data) 
+				{ 
+					SPI.modules.showErrors(data.serviceMessages);
+				}
+			});
+		}, 
+		sortProxies: {
+			init: function() {
+				if($(".wrapper-container").hasClass("custom-index")){ // For Custom Client Page
+					$("fieldset.sort").find("select").bind("change", function() {
+						var $input = $(this);
+						searchObj.updateResults.go($input.closest("form"));
+					});
+				}
+				else { // For spindices host search
+					$("fieldset.sort").find("input").addClass("access").bind("click", function() {
+						var $input = $(this);
+						$input.closest("label").addClass("selected").siblings().removeClass("selected");
+						searchObj.updateResults.go($input.closest("form"));
+					});
+				}				
+				this.sync();
+			}, 
+			sync: function() {
+				if($(".wrapper-container").hasClass("custom-index")){ // For Custom Client Page
+					$(".selecter_basic").selecter("destroy");
+					$(".selecter_basic").selecter({       
+						links: false,
+						showSelectedOption: true,
+						enableMouseOver : false,
+						customClass:"search-page-sort"
+					});
+				}
+				else { // For spindices host search
+					$("fieldset.sort").find("input[checked]").closest("label").addClass("selected").siblings().removeClass("selected");
+				}
+			}
+		}, 
+		checkboxProxies: {
+			$lastChangedCheckbox: null, 
+			init: function() {
+				var $checkboxes = searchObj.$facetsSidebar.find("input:checkbox");
+				var that = this;
+				$checkboxes.each(function() {
+					var $checkbox = $(this);
+					that.addProxyToDOM($checkbox);
+					$checkbox.bind("focus", function() {
+						$(this).closest("label").addClass("focused");
+					}).bind("blur", function() {
+						$(this).closest("label").removeClass("focused");
+					});
+				});
+			}, 
+			addProxyToDOM: function($checkbox) {
+				var $label = $checkbox.closest("label");
+				var checkedClass = ($checkbox.get(0).checked) ? " checked" : "";
+				$checkbox.after("<span class=\"check" + checkedClass + "\" />");
+				$label.addClass("proxied");
+			}, 
+			updateProxyWithCheckboxState: function($checkbox) {
+				this.$lastChangedCheckbox = $checkbox;
+				if ($checkbox.is(":checked")) {
+					this.getCheckboxProxy($checkbox).addClass("checked");
+				}
+				else {
+					this.getCheckboxProxy($checkbox).removeClass("checked");
+				}
+			},
+			getCheckboxProxy: function($checkbox) {
+				if (!$checkbox.data("proxy")) {
+					$checkbox.data("proxy", $checkbox.closest("label.proxied").find("span.check:first"));
+				}
+				return $checkbox.data("proxy");				
+			}
+		}, 
+		sidebarExpandCollapse: {
+			init: function() {
+				searchObj.$facetsSidebar.find("legend").add("div.savedSearch h2").addClass("clickable");
+			}, 
+			toggle: function($headingElem) {
+				if ($headingElem.is("legend") || $headingElem.is("legend *")) {
+					this._toggle($headingElem, $headingElem.closest("fieldset"));
+				}
+				else if ($headingElem.is("h2") || $headingElem.is("h2 *")) {
+					this._toggle($headingElem, $headingElem.closest("div.savedSearch"));
+				}
+			}, 
+			_toggle: function($triggerElem, $sectionContainer) {
+				if ($sectionContainer.hasClass("collapsed")) {
+					$sectionContainer.find("div.options:first").slideDown("fast", function() {
+						$sectionContainer.removeClass("collapsed");
+					});
+				}
+				else {
+					$sectionContainer.find("div.options:first").slideUp("fast", function() {
+						$sectionContainer.addClass("collapsed");
+					});
+				}
+			}
+		}, 
+		resultAreaDropdownMenu: {
+			closestDiv : "",
+			init: function(){
+				
+			},
+			show: function($select){				
+				var $closestDiv = $select.closest('.has-child');
+				searchObj.resultAreaDropdownMenu.closestDiv = $select.closest('.has-child');
+				if($closestDiv.find('div.generic-drop-down').length){
+					$closestDiv.addClass("active").find("a").addClass("active");
+					$closestDiv.find("span.down-arrow").addClass("active");
+					$closestDiv.find('div.generic-drop-down').show();
+				}
+				searchObj.resultAreaDropdownMenu.closestDiv.data("documentListener", $(document).click(function(e){	
+					if($(e.target).parents("div.result-per-page.has-child").length == 0) {				
+						searchObj.resultAreaDropdownMenu.closestDiv.removeClass("active").find("a").removeClass("active");
+						searchObj.resultAreaDropdownMenu.closestDiv.find("span.down-arrow").removeClass("active");
+						searchObj.resultAreaDropdownMenu.closestDiv.find('div.generic-drop-down').hide();					
+						searchObj.resultAreaDropdownMenu.closestDiv.data("documentListener").unbind();
+					}
+				}));
+			},
+			selectChild: function($listItem){
+				var newRange = $listItem.text();
+				var itemsPerPage= $listItem.attr("data-pagination");
+				//var textArr = newRange.split(" per ");				
+				$listItem.closest('div.result-per-page').find('.selected-item').contents().replaceWith(newRange);
+				$("#resultsPerPage").val(itemsPerPage);
+				$listItem.closest('div.generic-drop-down').hide();
+				$listItem.closest('div.result-per-page').removeClass("active").find("a").removeClass("active").end().find("span.down-arrow").removeClass("active");				
+				searchObj.updateResults.go($listItem.closest("form"));									
+			}
+		},
+		updateResults: {
+			go: function($form) {
+				this.goToPage($form, 1);
+			}, 
+			goToPage: function($form, pageNumber) {				
+				$form.addClass("loading");
+				this.getUpdatedResults($form.get(0).action + "?page=" + pageNumber + "&" + $form.serialize());				
+			}, 
+			getUpdatedResults: function(resultsUrl) {
+				var that = this;
+				$.ajax({
+					url: resultsUrl, 
+					dataType: "html", 
+					cache: true, 
+					success: function(data) {
+						//window.setTimeout(function() {
+						that.showUpdatedResults(data);
+						//}, 5000);
+					}, 
+					error: function() { 
+						window.location = resultsUrl;
+					}
+				});
+			}, 
+			showUpdatedResults: function(pageHtml) {
+				var $updatedResultsPage = $(pageHtml);
+
+				//update page html
+				searchObj.$form.html($updatedResultsPage.find("form.searchPage").html());
+				searchObj.init();
+				
+				//show form with updated data
+				searchObj.$form.removeClass("loading");
+			}
+		}
+	};
+	
+	SPI.searchPage.saveSearch = function() {
+		searchObj.saveSearch.loggedInSave();
+	};
+	
+	$().ready(function() {
+		searchObj.init();
+	});
+};

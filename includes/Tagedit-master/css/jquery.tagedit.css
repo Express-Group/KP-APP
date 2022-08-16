@@ -1,0 +1,49 @@
+.tagedit-list {
+    border: 1px solid #c6c6c6;
+    font-size: 13px;
+    margin: 0;
+    max-height: 100px;
+    min-height: 69px;
+    overflow: auto;
+    padding: 5px 5px 0;
+    width: 300px;
+}
+.tagedit-list li.tagedit-listelement {list-style-type: none; float: left; margin: 0 5px 5px 0; padding: 0; }
+/* New Item input */
+.tagedit-list li.tagedit-listelement-new input {border: 0; height: 100%; padding: 2px 5px; width: 15px; background: #fff;}
+.tagedit-list li.tagedit-listelement-new input:focus {outline: none;}
+.tagedit-list li.tagedit-listelement-new input.tagedit-input-disabled {display: none;}
+/* Item that is put to the List */
+.tagedit-list li.tagedit-listelement-old {
+    background-color: #e7e7e7;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    padding: 2px 4px 2px 13px;
+}
+.tagedit-list li.tagedit-listelement-old:hover {background-color: #d1d1d1;}
+.tagedit-list li.tagedit-listelement-old a.tagedit-close, .tagedit-list li.tagedit-listelement-old a.tagedit-break, .tagedit-list li.tagedit-listelement-old a.tagedit-delete, .tagedit-list li.tagedit-listelement-old a.tagedit-save {
+    background: rgba(0, 0, 0, 0) url("../img/cross.png") no-repeat scroll center center;
+   /* border-left: 1px dotted #7e9dd6;*/
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: bold;
+    height: 100%;
+    margin: 1px 2px 0 5px;
+    text-indent: -2000px;
+    width: 15px;
+}
+.tagedit-list li.tagedit-listelement-old a.tagedit-save {background-image: url(../img/tick.png); margin-right: 0;}
+.tagedit-list li.tagedit-listelement-old a.tagedit-break {background-image: url(../img/undo.png); margin-right: 0;}
+.tagedit-list li.tagedit-listelement-old a.tagedit-delete {background-image: url(../img/delete.png); margin: 0 5px 0 2px; background-position: right center;}
+/* Items that are edited */
+.tagedit-list li.tagedit-listelement-edit input.tagedit-edit-input {border: 0; background: transparent; font-size: 11px; color: #666; padding: 0;}
+.tagedit-list li.tagedit-listelement-edit input:focus {outline: none;}
+.tagedit-list li.tagedit-listelement-edit a.tagedit-break {border: 0; margin-left: 0;}
+.tagedit-list li.tagedit-listelement-edit a.tagedit-close,
+.tagedit-list li.tagedit-listelement-edit span {display: none;}
+/* Item is marked as deleted */
+.tagedit-list li.tagedit-listelement-deleted,
+.tagedit-list li.tagedit-listelement-deleted:hover {padding-right: 5px; background-color: #FFD6D6; border-color: #FFB7B7; border-style: dashed; }
+.tagedit-list li.tagedit-listelement-deleted span {text-decoration: line-through;}
+.tagedit-list li.tagedit-listelement-deleted a.tagedit-close {margin-right: 0;}

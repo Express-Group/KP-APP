@@ -1,0 +1,187 @@
+@charset "utf-8";
+/* CSS Document */
+
+.widget-img-lib{
+	width:100%;
+	margin:0;
+}
+.widget-img-lib img{
+	width: 200px !important;
+    height: 150px;
+}
+.popup_images img {
+    height: 95px;
+    width: 146px;
+}
+.set_image {
+    background-color: #8b8b8b;
+    border-radius: 3px 0 0 3px;
+    color: #fff;
+    margin-left: 10px;
+    margin-right: -3px;
+	padding: 0 11px !important;
+}
+.del_image {
+    /*padding: 7px 11px;*/
+    background-color: #cb404e !important;
+    border-radius: 0 3px 3px 0;
+}
+
+.del_image i, .delbtn_border i{
+	color: #fff !important;
+    margin-top: 0;
+}
+
+.del_image fa, .delbtn_border fa{
+	display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+.article-custom-image{
+	text-align:left !important;
+}
+.article-custom-image a{
+	background:#3c8dbc;
+    float: left;
+    font-size: 15px;
+    padding: 7px 11px;
+	color:#fff;
+	text-decoration: none;
+}
+.article-custom-image a:hover{
+	background:#007caa;
+}
+.browse-image{
+	border-radius:3px;
+}
+
+.overlay-black{ background-color:#000;}
+table#example td{ text-align:left; }
+.custom-row-show td:first-child{ padding:0 !important;}
+.Future-Article{ color:#F00; }
+
+#no-more-images, .article_browse1 .LoadingSelectImageLocal{
+	float: left;
+    position: absolute;
+    bottom: 31px;
+    right: 57%;
+	
+}
+.article_browse1 .LoadingSelectImageLocal img{
+	width:100%;
+	height:100%;
+	border:none; 
+	text-align: center;
+	float:none;margin: 0px;
+	padding: 0px;
+}
+.remodal-overlay{
+	background:#000;
+}
+
+
+
+/* Start Confirm Dialog box */
+
+.save-dialog-box .ui-dialog-content.ui-widget-content{
+	display:none !important;
+}
+.save-dialog-box .ui-dialog-title{ 
+	color: #fff; 
+    text-align: center;
+}
+.save-dialog-box .ui-dialog .ui-dialog-buttonpane{
+	border-width: 0;
+}
+.save-dialog-box .ui-state-default, .save-dialog-box .ui-widget-content .ui-state-default{
+	border: 1px solid #a7d6e9!important;
+}
+.ui-dialog  .ui-dialog-titlebar.ui-widget-header{
+	background:#51a5cf !important
+}
+.save-dialog-box.ui-dialog.ui-widget.ui-widget-content{
+	border-radius: 5px;
+}
+.save-dialog-box .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only{
+	background: rgba(6, 109, 160, 0.8) !important;
+    border: 1px solid #1384bc !important;
+    color: #fff !important;
+	border-radius:3px;
+	margin: .5em 1em .5em 0 !important;
+}
+.save-dialog-box .ui-dialog-buttonset{
+	float:none !important;
+	margin-left: 24px;
+}
+.save-dialog-box .ui-dialog .ui-dialog-buttonpane{
+	text-align:center !important;
+}
+.save-dialog-box .ui-widget {
+	font-size:13px !important;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+    right: 6px !important;
+    top: 9px !important;
+   
+}
+.save-dialog-box .ui-widget-overlay{
+	background:rgb(51, 51, 51) !important;
+}
+ .ui-widget-overlay.ui-front{
+	z-index:9999;
+}
+ .save-dialog-box .ui-widget button{
+	 font-family:inherit;
+ }
+ .fa.fa-times{
+	 font-family: FontAwesome !important;
+ }
+.save-dialog-box .ui-state-default, .save-dialog-box .ui-widget-content .ui-state-default, .save-dialog-box .ui-widget-header .ui-state-default{
+	 border:none !important;
+	 background:none !important;
+	 color:#fff !important;
+ }
+.save-dialog-box .ui-dialog .ui-dialog-title{
+	 margin-left:10px !important;
+ }
+ .save-dialog-box.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-widget-content.ui-draggable{
+	 left:400px !important;
+ }
+ .save-dialog-box .ui-widget-content{
+	 border:none !important;
+ }
+ a.ui-dialog-titlebar-close.ui-corner-all{
+	 margin: 0;
+    color: #fff;
+ }
+ a.ui-dialog-titlebar-close.ui-corner-all:hover{
+	background: none !important;
+	border:none !important;
+ }
+ /* End Confirm Dialog box */
+.supported-image-size{
+	clear:both;
+	margin:0;
+	font-weight:bold;
+}
+.supported-image-size span{
+	color: #CB404E;
+}
+.breadcrumbs p{
+	color: rgba(102, 102, 102, 0.76);
+	font-size:14px;
+	margin-top: 0;
+}
+.breadcrumbs p span{
+    margin: 0 3px;
+    color: #F44336;
+	vertical-align:middle;
+}
+.sorting, .sorting_asc
+{
+background-image:none !important;
+cursor:default !important;
+}

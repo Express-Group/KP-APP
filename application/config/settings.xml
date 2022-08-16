@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+<widget_imgpath>uploads/user/imagelibrary/</widget_imgpath>
+<section_url>niecpan/template_designer/load_saved_template/</section_url>
+<article_url>niecpan/template_designer/load_saved_template/</article_url>
+
+<!-- Temp image insert path -->
+<source_base_path>/home/nie_images/</source_base_path>
+<!-- Final image insert path -->
+<destination_base_path>/home/nie_images/</destination_base_path>
+
+
+<gallery_temp_image_path>uploads/imagegallery/temp/</gallery_temp_image_path>
+<article_temp_image_path>uploads/article/temp/</article_temp_image_path>
+<audio_temp_image_path>uploads/audio/temp/</audio_temp_image_path>
+<audio_temp_file_path>uploads/audio/audio_file_temp/</audio_temp_file_path>
+<video_temp_image_path>uploads/video/temp/</video_temp_image_path>
+<resource_temp_image_path>uploads/resource_image/temp/</resource_temp_image_path>
+<section_article_image_path>uploads/jumbo_menu_articles/</section_article_image_path>
+<author_temp_image_path>uploads/author/temp/</author_temp_image_path>
+<poll_temp_image_path>uploads/poll/temp/</poll_temp_image_path>
+<imagelibrary_temp_image_path>uploads/imagelibrary/temp/</imagelibrary_temp_image_path>
+
+<resource_worddocument_path>worddocument/</resource_worddocument_path>
+<resource_pdf_path>pdf/</resource_pdf_path>
+<resource_excel_path>excel/</resource_excel_path>
+<resource_ppt_path>ppt/</resource_ppt_path>
+
+<columinst_image_path>uploads/user/imagelibrary/author/</columinst_image_path>
+<image_resolution>65</image_resolution>
+
+<folder_name>niecpan</folder_name>
+
+<imagelibrary_image_path>uploads/user/imagelibrary/</imagelibrary_image_path>
+<resource_path>uploads/user/resources/</resource_path>
+<audio_source_path>uploads/user/audio/</audio_source_path>
+<ckeditor_image_path>uploads/user/ckeditor_images/article/</ckeditor_image_path>
+
+<image_url>http://images.newindianexpress.com/</image_url>
+
+<no_articles>Please add articles to show</no_articles>
+
+<home_url>http://images.newindianexpress.com/</home_url>
+
+</template>
